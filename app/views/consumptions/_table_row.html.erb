@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= consumption.tool_consumer_id %>
+  </td>
+
+  <td>
+    <%= consumption.credential_id %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to consumption, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_consumption_url(consumption), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to consumption, method: :delete, data: { confirm: "Do you really want to delete this consumption?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

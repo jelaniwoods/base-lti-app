@@ -1,0 +1,127 @@
+<% was_validated = tool_consumer.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(tool_consumer, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% instance_guid_class = "form-control" %>
+    <% instance_guid_was_invalid = tool_consumer.errors.include?(:instance_guid) %>
+
+    <% if was_validated %>
+      <% if instance_guid_was_invalid %>
+        <% instance_guid_class << " is-invalid" %>
+      <% else %>
+        <% instance_guid_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instance_guid %>
+
+    <%= f.text_field :instance_guid, class: instance_guid_class, placeholder: "Enter instance guid" %>
+    <% if instance_guid_was_invalid %>
+      <% tool_consumer.errors.full_messages_for(:instance_guid).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% instance_name_class = "form-control" %>
+    <% instance_name_was_invalid = tool_consumer.errors.include?(:instance_name) %>
+
+    <% if was_validated %>
+      <% if instance_name_was_invalid %>
+        <% instance_name_class << " is-invalid" %>
+      <% else %>
+        <% instance_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instance_name %>
+
+    <%= f.text_field :instance_name, class: instance_name_class, placeholder: "Enter instance name" %>
+    <% if instance_name_was_invalid %>
+      <% tool_consumer.errors.full_messages_for(:instance_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% instance_description_class = "form-control" %>
+    <% instance_description_was_invalid = tool_consumer.errors.include?(:instance_description) %>
+
+    <% if was_validated %>
+      <% if instance_description_was_invalid %>
+        <% instance_description_class << " is-invalid" %>
+      <% else %>
+        <% instance_description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instance_description %>
+
+    <%= f.text_field :instance_description, class: instance_description_class, placeholder: "Enter instance description" %>
+    <% if instance_description_was_invalid %>
+      <% tool_consumer.errors.full_messages_for(:instance_description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% instance_url_class = "form-control" %>
+    <% instance_url_was_invalid = tool_consumer.errors.include?(:instance_url) %>
+
+    <% if was_validated %>
+      <% if instance_url_was_invalid %>
+        <% instance_url_class << " is-invalid" %>
+      <% else %>
+        <% instance_url_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instance_url %>
+
+    <%= f.text_field :instance_url, class: instance_url_class, placeholder: "Enter instance url" %>
+    <% if instance_url_was_invalid %>
+      <% tool_consumer.errors.full_messages_for(:instance_url).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% instance_contact_email_class = "form-control" %>
+    <% instance_contact_email_was_invalid = tool_consumer.errors.include?(:instance_contact_email) %>
+
+    <% if was_validated %>
+      <% if instance_contact_email_was_invalid %>
+        <% instance_contact_email_class << " is-invalid" %>
+      <% else %>
+        <% instance_contact_email_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instance_contact_email %>
+
+    <%= f.text_field :instance_contact_email, class: instance_contact_email_class, placeholder: "Enter instance contact email" %>
+    <% if instance_contact_email_was_invalid %>
+      <% tool_consumer.errors.full_messages_for(:instance_contact_email).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

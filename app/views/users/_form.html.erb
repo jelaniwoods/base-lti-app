@@ -1,0 +1,103 @@
+<% was_validated = user.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(user, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% first_name_class = "form-control" %>
+    <% first_name_was_invalid = user.errors.include?(:first_name) %>
+
+    <% if was_validated %>
+      <% if first_name_was_invalid %>
+        <% first_name_class << " is-invalid" %>
+      <% else %>
+        <% first_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :first_name %>
+
+    <%= f.text_field :first_name, class: first_name_class, placeholder: "Enter first name" %>
+    <% if first_name_was_invalid %>
+      <% user.errors.full_messages_for(:first_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% last_name_class = "form-control" %>
+    <% last_name_was_invalid = user.errors.include?(:last_name) %>
+
+    <% if was_validated %>
+      <% if last_name_was_invalid %>
+        <% last_name_class << " is-invalid" %>
+      <% else %>
+        <% last_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :last_name %>
+
+    <%= f.text_field :last_name, class: last_name_class, placeholder: "Enter last name" %>
+    <% if last_name_was_invalid %>
+      <% user.errors.full_messages_for(:last_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% preferred_name_class = "form-control" %>
+    <% preferred_name_was_invalid = user.errors.include?(:preferred_name) %>
+
+    <% if was_validated %>
+      <% if preferred_name_was_invalid %>
+        <% preferred_name_class << " is-invalid" %>
+      <% else %>
+        <% preferred_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :preferred_name %>
+
+    <%= f.text_field :preferred_name, class: preferred_name_class, placeholder: "Enter preferred name" %>
+    <% if preferred_name_was_invalid %>
+      <% user.errors.full_messages_for(:preferred_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% id_from_tc_class = "form-control" %>
+    <% id_from_tc_was_invalid = user.errors.include?(:id_from_tc) %>
+
+    <% if was_validated %>
+      <% if id_from_tc_was_invalid %>
+        <% id_from_tc_class << " is-invalid" %>
+      <% else %>
+        <% id_from_tc_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :id_from_tc %>
+
+    <%= f.text_field :id_from_tc, class: id_from_tc_class, placeholder: "Enter id from tc" %>
+    <% if id_from_tc_was_invalid %>
+      <% user.errors.full_messages_for(:id_from_tc).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

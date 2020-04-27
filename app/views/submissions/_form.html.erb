@@ -1,0 +1,79 @@
+<% was_validated = submission.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(submission, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% enrollment_id_class = "form-control" %>
+    <% enrollment_id_was_invalid = submission.errors.include?(:enrollment_id) %>
+
+    <% if was_validated %>
+      <% if enrollment_id_was_invalid %>
+        <% enrollment_id_class << " is-invalid" %>
+      <% else %>
+        <% enrollment_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :enrollment_id %>
+
+    <%= f.text_field :enrollment_id, class: enrollment_id_class, placeholder: "Enter enrollment" %>
+    <% if enrollment_id_was_invalid %>
+      <% submission.errors.full_messages_for(:enrollment_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% resource_id_class = "form-control" %>
+    <% resource_id_was_invalid = submission.errors.include?(:resource_id) %>
+
+    <% if was_validated %>
+      <% if resource_id_was_invalid %>
+        <% resource_id_class << " is-invalid" %>
+      <% else %>
+        <% resource_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :resource_id %>
+
+    <%= f.text_field :resource_id, class: resource_id_class, placeholder: "Enter resource" %>
+    <% if resource_id_was_invalid %>
+      <% submission.errors.full_messages_for(:resource_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% score_class = "form-control" %>
+    <% score_was_invalid = submission.errors.include?(:score) %>
+
+    <% if was_validated %>
+      <% if score_was_invalid %>
+        <% score_class << " is-invalid" %>
+      <% else %>
+        <% score_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :score %>
+
+    <%= f.text_field :score, class: score_class, placeholder: "Enter score" %>
+    <% if score_was_invalid %>
+      <% submission.errors.full_messages_for(:score).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

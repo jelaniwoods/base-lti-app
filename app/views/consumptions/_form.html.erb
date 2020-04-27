@@ -1,0 +1,55 @@
+<% was_validated = consumption.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(consumption, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% tool_consumer_id_class = "form-control" %>
+    <% tool_consumer_id_was_invalid = consumption.errors.include?(:tool_consumer_id) %>
+
+    <% if was_validated %>
+      <% if tool_consumer_id_was_invalid %>
+        <% tool_consumer_id_class << " is-invalid" %>
+      <% else %>
+        <% tool_consumer_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :tool_consumer_id %>
+
+    <%= f.text_field :tool_consumer_id, class: tool_consumer_id_class, placeholder: "Enter tool consumer" %>
+    <% if tool_consumer_id_was_invalid %>
+      <% consumption.errors.full_messages_for(:tool_consumer_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% credential_id_class = "form-control" %>
+    <% credential_id_was_invalid = consumption.errors.include?(:credential_id) %>
+
+    <% if was_validated %>
+      <% if credential_id_was_invalid %>
+        <% credential_id_class << " is-invalid" %>
+      <% else %>
+        <% credential_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :credential_id %>
+
+    <%= f.text_field :credential_id, class: credential_id_class, placeholder: "Enter credential" %>
+    <% if credential_id_was_invalid %>
+      <% consumption.errors.full_messages_for(:credential_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

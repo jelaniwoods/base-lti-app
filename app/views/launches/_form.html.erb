@@ -1,0 +1,151 @@
+<% was_validated = launch.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(launch, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% context_id_class = "form-control" %>
+    <% context_id_was_invalid = launch.errors.include?(:context_id) %>
+
+    <% if was_validated %>
+      <% if context_id_was_invalid %>
+        <% context_id_class << " is-invalid" %>
+      <% else %>
+        <% context_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :context_id %>
+
+    <%= f.text_field :context_id, class: context_id_class, placeholder: "Enter context" %>
+    <% if context_id_was_invalid %>
+      <% launch.errors.full_messages_for(:context_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% resource_id_class = "form-control" %>
+    <% resource_id_was_invalid = launch.errors.include?(:resource_id) %>
+
+    <% if was_validated %>
+      <% if resource_id_was_invalid %>
+        <% resource_id_class << " is-invalid" %>
+      <% else %>
+        <% resource_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :resource_id %>
+
+    <%= f.text_field :resource_id, class: resource_id_class, placeholder: "Enter resource" %>
+    <% if resource_id_was_invalid %>
+      <% launch.errors.full_messages_for(:resource_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% enrollment_id_class = "form-control" %>
+    <% enrollment_id_was_invalid = launch.errors.include?(:enrollment_id) %>
+
+    <% if was_validated %>
+      <% if enrollment_id_was_invalid %>
+        <% enrollment_id_class << " is-invalid" %>
+      <% else %>
+        <% enrollment_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :enrollment_id %>
+
+    <%= f.text_field :enrollment_id, class: enrollment_id_class, placeholder: "Enter enrollment" %>
+    <% if enrollment_id_was_invalid %>
+      <% launch.errors.full_messages_for(:enrollment_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% user_id_class = "form-control" %>
+    <% user_id_was_invalid = launch.errors.include?(:user_id) %>
+
+    <% if was_validated %>
+      <% if user_id_was_invalid %>
+        <% user_id_class << " is-invalid" %>
+      <% else %>
+        <% user_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+
+    <%= f.text_field :user_id, class: user_id_class, placeholder: "Enter user" %>
+    <% if user_id_was_invalid %>
+      <% launch.errors.full_messages_for(:user_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% tool_consumer_id_class = "form-control" %>
+    <% tool_consumer_id_was_invalid = launch.errors.include?(:tool_consumer_id) %>
+
+    <% if was_validated %>
+      <% if tool_consumer_id_was_invalid %>
+        <% tool_consumer_id_class << " is-invalid" %>
+      <% else %>
+        <% tool_consumer_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :tool_consumer_id %>
+
+    <%= f.text_field :tool_consumer_id, class: tool_consumer_id_class, placeholder: "Enter tool consumer" %>
+    <% if tool_consumer_id_was_invalid %>
+      <% launch.errors.full_messages_for(:tool_consumer_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% payload_class = "form-control" %>
+    <% payload_was_invalid = launch.errors.include?(:payload) %>
+
+    <% if was_validated %>
+      <% if payload_was_invalid %>
+        <% payload_class << " is-invalid" %>
+      <% else %>
+        <% payload_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :payload %>
+
+    <%= f.text_field :payload, class: payload_class, placeholder: "Enter payload" %>
+    <% if payload_was_invalid %>
+      <% launch.errors.full_messages_for(:payload).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
