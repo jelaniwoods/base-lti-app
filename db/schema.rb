@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_203538) do
   create_table "contexts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.string "id_from_tc"
+    t.uuid "credential_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

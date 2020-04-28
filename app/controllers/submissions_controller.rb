@@ -33,7 +33,7 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1
   def update
     if @submission.update(submission_params)
-      redirect_to @submission, notice: 'Submission was successfully updated.'
+      redirect_to @submission.resource, notice: 'Submission was successfully updated.'
     else
       render :edit
     end

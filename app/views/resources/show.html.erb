@@ -3,3 +3,8 @@
     <%= render object: @resource, partial: "card", as: :resource %>
   </div>
 </div>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <%= render "submissions/form", submission: current_enrollment.submissions.find_by(resource: @resource) %>
+  </div>
+</div>

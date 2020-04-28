@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :enrollments, only: %i[]
     resources :messages, only: %i[create show]
     resources :resources, only: %i[show edit]
-    resources :submissions, only: %i[]
+    resources :submissions, only: %i[update]
     resources :tool_consumers, only: %i[]
     resources :users, only: %i[]
     resource :launch, only: :create

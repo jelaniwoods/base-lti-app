@@ -78,6 +78,7 @@ class LaunchService
       id_from_tc: payload[:context_id],
     ) do |context|
       context.title = payload[:context_title]
+      context.credential = find_credential
     end
     context
   end
